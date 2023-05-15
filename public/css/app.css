@@ -1,0 +1,4 @@
+/* default */
+@import 'components/global.css';
+/* _partials */
+@import 'components/_partials/header.css';
