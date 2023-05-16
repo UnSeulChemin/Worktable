@@ -3,9 +3,18 @@ body
     background-color: lightblue;
 }
 
-h1
+main
+{
+    text-align: center;
+
+    padding: 20px;
+}
+
+h2
 {
     font-size: 1.2em;
+
+    padding-bottom: 20px;
 }
 
 p
