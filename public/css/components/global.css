@@ -20,6 +20,8 @@ h2
 p
 {
     font-size: 1.1em;
+
+    padding-bottom: 10px;
 }
 
 a
@@ -34,4 +36,28 @@ ul
 {
     display: flex;
     justify-content: center;
+}
+
+/* Form */
+
+form div
+{
+    margin-bottom: 20px;
+}
+
+form div:last-of-type
+{
+    margin-bottom: 0;
+}
+
+form div label
+{
+    padding-right: 10px;
+}
+
+form div input
+{
+    width: 100px;
+
+    border: 1px solid #333;
 }

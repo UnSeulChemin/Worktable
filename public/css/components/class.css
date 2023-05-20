@@ -1,0 +1,52 @@
+
+/* Flash */
+
+.success-flash
+{
+    background-color: green;
+    width: 40%;
+
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
+
+.success-flash p
+{
+    padding-bottom: 0;
+}
+
+.warning-flash
+{
+    background-color: red;
+    width: 40%;
+
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px 0;    
+}
+
+/* Generic */
+
+.hr
+{
+    width: 500px;
+
+    margin: 20px auto;
+    border: 1px solid #333;
+}
+
+.button-send
+{
+    width: 100px;
+    background-color: grey;
+
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.button-send:hover
+{
+    opacity: 0.9;
+}

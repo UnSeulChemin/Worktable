@@ -4,8 +4,37 @@
 
 {% block body %}
 
-<h2>Page HTML</h2>
+<h2>Formulaire HTML</h2>
 
-<p>Le form</p>
+{{ form_start(form) }}
+
+    {% for message in app.flashes('success') %}
+        <div class="success-flash">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('warning') %}
+        <div class="warning-flash">
+            <p>{{ message }}</p>
+            {{ form_errors(form.name) }}
+        </div>
+    {% endfor %}
+
+    <div>
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name) }}
+    </div>
+
+    <div>
+        {{ form_label(form.submit) }}
+        {{ form_widget(form.submit) }}
+    </div>
+
+{{ form_end(form) }}
+
+<div class="hr"></div>
+
+<h2>Données HTML</h2>
 
 {% endblock %}
