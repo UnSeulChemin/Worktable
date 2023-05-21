@@ -32,6 +32,11 @@ a
     text-decoration: none;
 }
 
+button
+{
+    font-size: 1em;
+}
+
 ul
 {
     display: flex;

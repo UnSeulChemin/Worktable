@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HTML - Update{% endblock %}
+
+{% block body %}
+
+<h2 class="padding-bottom-none">Formulaire HTML</h2>
+
+<div class="hr"></div>
+
+<h2>Modifier HTML</h2>
+
+{{ form_start(form) }}
+
+    {# Flash Messages #}
+    {% for message in app.flashes('success') %}
+        <div class="success-flash">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    {# Flash Messages #}
+    {% for message in app.flashes('warning') %}
+        <div class="warning-flash">
+            <p>{{ message }}</p>
+            {{ form_errors(form.name) }}
+        </div>
+    {% endfor %}
+
+    <div class="card">
+
+        <div>
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+
+        <div>
+            {{ form_label(form.submit) }}
+            {{ form_widget(form.submit) }}
+        </div>
+
+    </div>
+
+{{ form_end(form) }}
+
+{% endblock %}

@@ -8,12 +8,14 @@
 
 {{ form_start(form) }}
 
+    {# Flash Messages #}
     {% for message in app.flashes('success') %}
         <div class="success-flash">
             <p>{{ message }}</p>
         </div>
     {% endfor %}
 
+    {# Flash Messages #}
     {% for message in app.flashes('warning') %}
         <div class="warning-flash">
             <p>{{ message }}</p>
@@ -36,5 +38,17 @@
 <div class="hr"></div>
 
 <h2>Données HTML</h2>
+
+{% for readHtml in readsHtml %}
+    <div class="card">
+        <div>
+            <p>{{ readHtml.name }}</p>
+        </div>
+        <div>
+            <a class="button-send margin-right-min" href="{{ path('app_html_update', { id: readHtml.id }) }}">Modifier</a>
+            <a class="button-send margin-left-min" href="{{ path('app_html_delete', { id: readHtml.id }) }}">Supprimer</a>  
+        </div>
+    </div>
+{% endfor %}
 
 {% endblock %}
