@@ -6,7 +6,7 @@
 
 <h2>Formulaire HTML</h2>
 
-{{ form_start(form) }}
+{{ form_start(createFormHtml) }}
 
     {# Flash Messages #}
     {% for message in app.flashes('success') %}
@@ -19,21 +19,21 @@
     {% for message in app.flashes('warning') %}
         <div class="warning-flash">
             <p>{{ message }}</p>
-            {{ form_errors(form.name) }}
+            {{ form_errors(createFormHtml.name) }}
         </div>
     {% endfor %}
 
     <div>
-        {{ form_label(form.name) }}
-        {{ form_widget(form.name) }}
+        {{ form_label(createFormHtml.name) }}
+        {{ form_widget(createFormHtml.name) }}
     </div>
 
     <div>
-        {{ form_label(form.submit) }}
-        {{ form_widget(form.submit) }}
+        {{ form_label(createFormHtml.submit) }}
+        {{ form_widget(createFormHtml.submit) }}
     </div>
 
-{{ form_end(form) }}
+{{ form_end(createFormHtml) }}
 
 <div class="hr"></div>
 

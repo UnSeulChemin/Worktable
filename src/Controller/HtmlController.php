@@ -3,78 +3,133 @@
 namespace App\Controller;
 
 use App\Entity\Html;
+use App\Repository\HtmlRepository;
 use App\Form\HtmlFormType;
 use App\Form\HtmlEditFormType;
-use App\Repository\HtmlRepository;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+/**
+ * Page Html
+ */
 #[Route('/html', name: 'app_html_')]
 class HtmlController extends AbstractController
 {
+
+    /**
+     * Page Html, Read, Create
+     *
+     * @param Request $request
+     * @param HtmlRepository $repository
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
     #[Route('', name: 'index')]
-    public function index(Request $request, EntityManagerInterface $manager, HtmlRepository $repository): Response
+    public function indexHtml(Request $request, HtmlRepository $repository, EntityManagerInterface $manager): Response
     {
-        // Read
+        /* Read */
         $readsHtml = $repository->findBy([], ['id' => 'DESC']);
 
-        // Create
+        /* Create */
         $createHtml = new Html();
 
-        $form = $this->createForm(HtmlFormType::class, $createHtml);
-        $form->handleRequest($request);
+        /* Create Form */
+        $createFormHtml = $this->createForm(HtmlFormType::class, $createHtml);
+        $createFormHtml->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
+        if ($createFormHtml->isSubmitted() && $createFormHtml->isValid())
         {
-            $createHtml = $form->getData();
+            /* Get Data */
+            $createHtml = $createFormHtml->getData();
 
+            /* Treat Data */
             $manager->persist($createHtml);
             $manager->flush();
 
-            $this->addFlash('success', 'Your HTML message have been successfully sent !');
+            /* Flash Message */
+            $this->addFlash('success', 'Your HTML message has been successfully sent !');
+
+            /* Redirect */
             return $this->redirectToRoute('app_html_index');
         }
 
-        else if ($form->isSubmitted() && !$form->isValid())
+        else if ($createFormHtml->isSubmitted() && !$createFormHtml->isValid())
         {
+            /* Flash Message */
             $this->addFlash('warning', 'Complete the following step and try again.');
         }
 
-        return $this->render('pages/html/html.html.twig', compact('form', 'readsHtml'));
+        /* Redirect */
+        return $this->render('pages/html/html.html.twig', compact('createFormHtml', 'readsHtml'));
     }
 
-
-
+    /**
+     * Page Html, Update
+     *
+     * @param Request $request
+     * @param Html $html
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
     #[Route('/update/{id}', name: 'update', methods: ['GET', 'POST'])]
-    public function editUsers(Request $request, Html $html, EntityManagerInterface $manager): Response
+    public function editHtml(Request $request, Html $html, EntityManagerInterface $manager): Response
     {
-        $form = $this->createForm(HtmlEditFormType::class, $html);
-        $form->handleRequest($request);
+        /* Edit === $html */
 
-        if ($form->isSubmitted() && $form->isValid())
+        /* Edit Form */
+        $editFormHtml = $this->createForm(HtmlEditFormType::class, $html);
+        $editFormHtml->handleRequest($request);
+
+        if ($editFormHtml->isSubmitted() && $editFormHtml->isValid())
         {
-            $html = $form->getData();
+            /* Get Data */
+            $html = $editFormHtml->getData();
 
+            /* Treat Data */
             $manager->persist($html);
             $manager->flush();
 
+            /* Flash Message */
+            $this->addFlash('success', 'Your HTML message has been successfully updated !');
+
+            /* Redirect */            
             return $this->redirectToRoute('app_html_index');
         }
 
-        return $this->render('pages/html/html_edit.html.twig', compact('form'));
+        else if ($editFormHtml->isSubmitted() && !$editFormHtml->isValid())
+        {
+            /* Flash Message */
+            $this->addFlash('warning', 'Complete the following step and try again.');
+        }
+
+        /* Redirect */
+        return $this->render('pages/html/html_edit.html.twig', compact('editFormHtml'));
     }
 
-
+    /**
+     * Page Html, Delete
+     *
+     * @param Html $html
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
     #[Route('/delete/{id}', name: 'delete', methods: ['GET'])]
-    public function deleteUsers(Html $html, EntityManagerInterface $manager): Response
+    public function deleteHtml(Html $html, EntityManagerInterface $manager): Response
     {
+        /* Get Data === $html */
+
+        /* Treat Data */
         $manager->remove($html);
         $manager->flush();
 
-        $this->addFlash('success', 'Your HTML message have been successfully delete !');
+        /* Flash Message */
+        $this->addFlash('success', 'Your HTML message has been successfully delete !');
+
+        /* Redirect */       
         return $this->redirectToRoute('app_html_index');
     }
 
