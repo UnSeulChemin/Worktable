@@ -19,7 +19,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/html', name: 'app_html_')]
 class HtmlController extends AbstractController
 {
-
     /**
      * Page Html, Read, Create
      *
@@ -132,5 +131,4 @@ class HtmlController extends AbstractController
         /* Redirect */       
         return $this->redirectToRoute('app_html_index');
     }
-
 }

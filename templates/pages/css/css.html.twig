@@ -4,8 +4,51 @@
 
 {% block body %}
 
-<h2>Page CSS</h2>
+<h2>Formulaire CSS</h2>
 
-<p>Le form</p>
+{{ form_start(createFormCss) }}
+
+    {# Flash Messages #}
+    {% for message in app.flashes('success') %}
+        <div class="success-flash">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    {# Flash Messages #}
+    {% for message in app.flashes('warning') %}
+        <div class="warning-flash">
+            <p>{{ message }}</p>
+            {{ form_errors(createFormCss.name) }}
+        </div>
+    {% endfor %}
+
+    <div>
+        {{ form_label(createFormCss.name) }}
+        {{ form_widget(createFormCss.name) }}
+    </div>
+
+    <div>
+        {{ form_label(createFormCss.submit) }}
+        {{ form_widget(createFormCss.submit) }}
+    </div>
+
+{{ form_end(createFormCss) }}
+
+<div class="hr"></div>
+
+<h2>Données CSS</h2>
+
+{% for readCss in readsCss %}
+    <div class="card">
+        <div>
+            <p>{{ readCss.name }}</p>
+        </div>
+        <div>
+            <a class="button-send margin-right-min" href="{{ path('app_css_update', { id: readCss.id }) }}">Modifier</a>
+            <a class="button-send margin-left-min" href="{{ path('app_css_delete', { id: readCss.id }) }}">Supprimer</a>  
+        </div>
+    </div>
+{% endfor %}
 
 {% endblock %}
