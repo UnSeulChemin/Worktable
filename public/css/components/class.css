@@ -1,31 +1,4 @@
 
-/* Flash */
-
-.success-flash
-{
-    background-color: green;
-    width: 40%;
-
-    margin: auto;
-    margin-bottom: 20px;
-    padding: 20px 0;
-}
-
-.success-flash p
-{
-    padding-bottom: 0;
-}
-
-.warning-flash
-{
-    background-color: red;
-    width: 40%;
-
-    margin: auto;
-    margin-bottom: 20px;
-    padding: 20px 0;    
-}
-
 /* Marges */
 
 .margin-top-min
@@ -53,6 +26,33 @@
     padding: 0;
 }
 
+/* Flash */
+
+.success-flash
+{
+    background-color: green;
+    width: 40%;
+
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
+
+.success-flash p
+{
+    padding-bottom: 0;
+}
+
+.warning-flash
+{
+    background-color: red;
+    width: 40%;
+
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px 0;    
+}
+
 /* Generic */
 
 .hr
@@ -67,8 +67,8 @@
 {
     display: inline-block;
     cursor: pointer;
-    width: 100px;
     background-color: grey;
+    width: 100px;
 
     padding: 5px;
     border: 1px solid #333;
@@ -82,8 +82,7 @@
 
 .card
 {
+    margin-bottom: 20px;
     padding: 20px 0;
     border: 1px solid #333;
-
-    margin-bottom: 20px;
 }

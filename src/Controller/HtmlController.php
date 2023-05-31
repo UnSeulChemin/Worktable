@@ -31,7 +31,7 @@ class HtmlController extends AbstractController
     public function indexHtml(Request $request, HtmlRepository $repository, EntityManagerInterface $manager): Response
     {
         /* Read */
-        $readsHtml = $repository->findBy([], ['id' => 'DESC']);
+        $readHtml = $repository->findBy([], ['id' => 'DESC']);
 
         /* Create */
         $createHtml = new Html();
@@ -63,33 +63,33 @@ class HtmlController extends AbstractController
         }
 
         /* Redirect */
-        return $this->render('pages/html/html.html.twig', compact('createFormHtml', 'readsHtml'));
+        return $this->render('pages/html/html.html.twig', compact('createFormHtml', 'readHtml'));
     }
 
     /**
      * Page Html, Update
      *
      * @param Request $request
-     * @param Html $html
+     * @param Html $updateHtml
      * @param EntityManagerInterface $manager
      * @return Response
      */
     #[Route('/update/{id}', name: 'update', methods: ['GET', 'POST'])]
-    public function editHtml(Request $request, Html $html, EntityManagerInterface $manager): Response
+    public function updateHtml(Request $request, Html $updateHtml, EntityManagerInterface $manager): Response
     {
-        /* Edit === $html */
+        /* Update === $updateHtml */
 
-        /* Edit Form */
-        $editFormHtml = $this->createForm(HtmlEditFormType::class, $html);
-        $editFormHtml->handleRequest($request);
+        /* Update Form */
+        $updateFormHtml = $this->createForm(HtmlEditFormType::class, $updateHtml);
+        $updateFormHtml->handleRequest($request);
 
-        if ($editFormHtml->isSubmitted() && $editFormHtml->isValid())
+        if ($updateFormHtml->isSubmitted() && $updateFormHtml->isValid())
         {
             /* Get Data */
-            $html = $editFormHtml->getData();
+            $updateHtml = $updateFormHtml->getData();
 
             /* Treat Data */
-            $manager->persist($html);
+            $manager->persist($updateHtml);
             $manager->flush();
 
             /* Flash Message */
@@ -99,30 +99,30 @@ class HtmlController extends AbstractController
             return $this->redirectToRoute('app_html_index');
         }
 
-        else if ($editFormHtml->isSubmitted() && !$editFormHtml->isValid())
+        else if ($updateFormHtml->isSubmitted() && !$updateFormHtml->isValid())
         {
             /* Flash Message */
             $this->addFlash('warning', 'Complete the following step and try again.');
         }
 
         /* Redirect */
-        return $this->render('pages/html/html_edit.html.twig', compact('editFormHtml'));
+        return $this->render('pages/html/html_edit.html.twig', compact('updateFormHtml'));
     }
 
     /**
      * Page Html, Delete
      *
-     * @param Html $html
+     * @param Html $deleteHtml
      * @param EntityManagerInterface $manager
      * @return Response
      */
     #[Route('/delete/{id}', name: 'delete', methods: ['GET'])]
-    public function deleteHtml(Html $html, EntityManagerInterface $manager): Response
+    public function deleteHtml(Html $deleteHtml, EntityManagerInterface $manager): Response
     {
-        /* Get Data === $html */
+        /* Delete === $deleteHtml */
 
         /* Treat Data */
-        $manager->remove($html);
+        $manager->remove($deleteHtml);
         $manager->flush();
 
         /* Flash Message */

@@ -10,7 +10,7 @@
 
 <h2>Modifier HTML</h2>
 
-{{ form_start(editFormHtml) }}
+{{ form_start(updateFormHtml) }}
 
     {# Flash Messages #}
     {% for message in app.flashes('success') %}
@@ -23,24 +23,24 @@
     {% for message in app.flashes('warning') %}
         <div class="warning-flash">
             <p>{{ message }}</p>
-            {{ form_errors(editFormHtml.name) }}
+            {{ form_errors(updateFormHtml.name) }}
         </div>
     {% endfor %}
 
     <div class="card">
 
         <div>
-            {{ form_label(editFormHtml.name) }}
-            {{ form_widget(editFormHtml.name) }}
+            {{ form_label(updateFormHtml.name) }}
+            {{ form_widget(updateFormHtml.name) }}
         </div>
 
         <div>
-            {{ form_label(editFormHtml.submit) }}
-            {{ form_widget(editFormHtml.submit) }}
+            {{ form_label(updateFormHtml.submit) }}
+            {{ form_widget(updateFormHtml.submit) }}
         </div>
 
     </div>
 
-{{ form_end(editFormHtml) }}
+{{ form_end(updateFormHtml) }}
 
 {% endblock %}
