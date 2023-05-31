@@ -28,6 +28,11 @@
 
 /* Marges */
 
+.margin-top-min
+{
+    margin-top: 10px;
+}
+
 .margin-right-min
 {
     margin-right: 10px;
@@ -41,6 +46,11 @@
 .padding-bottom-none
 {
     padding-bottom: 0;
+}
+
+.padding-none
+{
+    padding: 0;
 }
 
 /* Generic */
