@@ -31,7 +31,7 @@ class CssController extends AbstractController
     public function indexCss(Request $request, CssRepository $repository, EntityManagerInterface $manager): Response
     {
         /* Read */
-        $readsCss = $repository->findBy([], ['id' => 'DESC']);
+        $readCss = $repository->findBy([], ['id' => 'DESC']);
 
         /* Create */
         $createCss = new Css();
@@ -63,33 +63,33 @@ class CssController extends AbstractController
         }
 
         /* Redirect */
-        return $this->render('pages/css/css.html.twig', compact('createFormCss', 'readsCss'));
+        return $this->render('pages/css/css.html.twig', compact('createFormCss', 'readCss'));
     }
-
+ 
     /**
      * Page Css, Update
      *
      * @param Request $request
-     * @param Css $css
+     * @param Css $updateCss
      * @param EntityManagerInterface $manager
      * @return Response
-     */    
+     */
     #[Route('/update/{id}', name: 'update', methods: ['GET', 'POST'])]
-    public function editCss(Request $request, Css $css, EntityManagerInterface $manager): Response
+    public function updateCss(Request $request, Css $updateCss, EntityManagerInterface $manager): Response
     {
-        /* Edit === $css */
+        /* Get Data === $updateCss */
 
-        /* Edit Form */
-        $editFormCss = $this->createForm(CssEditFormType::class, $css);
-        $editFormCss->handleRequest($request);
+        /* Update Form */
+        $updateFormCss = $this->createForm(CssEditFormType::class, $updateCss);
+        $updateFormCss->handleRequest($request);
 
-        if ($editFormCss->isSubmitted() && $editFormCss->isValid())
+        if ($updateFormCss->isSubmitted() && $updateFormCss->isValid())
         {
             /* Get Data */
-            $css = $editFormCss->getData();
+            $updateCss = $updateFormCss->getData();
 
             /* Treat Data */
-            $manager->persist($css);
+            $manager->persist($updateCss);
             $manager->flush();
 
             /* Flash Message */
@@ -99,30 +99,30 @@ class CssController extends AbstractController
             return $this->redirectToRoute('app_css_index');
         }
 
-        else if ($editFormCss->isSubmitted() && !$editFormCss->isValid())
+        else if ($updateFormCss->isSubmitted() && !$updateFormCss->isValid())
         {
             /* Flash Message */
             $this->addFlash('warning', 'Complete the following step and try again.');
         }
 
         /* Redirect */
-        return $this->render('pages/css/css_edit.html.twig', compact('editFormCss'));
+        return $this->render('pages/css/css_edit.html.twig', compact('updateFormCss'));
     }
 
     /**
      * Page Css, Delete
      *
-     * @param Css $css
+     * @param Css $deleteCss
      * @param EntityManagerInterface $manager
      * @return Response
      */
     #[Route('/delete/{id}', name: 'delete', methods: ['GET'])]
-    public function deleteCss(Css $css, EntityManagerInterface $manager): Response
+    public function deleteCss(Css $deleteCss, EntityManagerInterface $manager): Response
     {
-        /* Get Data === $css */
+        /* Get Data === $deleteCss */
 
         /* Treat Data */
-        $manager->remove($css);
+        $manager->remove($deleteCss);
         $manager->flush();
 
         /* Flash Message */

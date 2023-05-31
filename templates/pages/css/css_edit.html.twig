@@ -10,7 +10,7 @@
 
 <h2>Modifier CSS</h2>
 
-{{ form_start(editFormCss) }}
+{{ form_start(updateFormCss) }}
 
     {# Flash Messages #}
     {% for message in app.flashes('success') %}
@@ -23,24 +23,24 @@
     {% for message in app.flashes('warning') %}
         <div class="warning-flash">
             <p>{{ message }}</p>
-            {{ form_errors(editFormCss.name) }}
+            {{ form_errors(updateFormCss.name) }}
         </div>
     {% endfor %}
 
     <div class="card">
 
         <div>
-            {{ form_label(editFormCss.name) }}
-            {{ form_widget(editFormCss.name) }}
+            {{ form_label(updateFormCss.name) }}
+            {{ form_widget(updateFormCss.name) }}
         </div>
 
         <div>
-            {{ form_label(editFormCss.submit) }}
-            {{ form_widget(editFormCss.submit) }}
+            {{ form_label(updateFormCss.submit) }}
+            {{ form_widget(updateFormCss.submit) }}
         </div>
 
     </div>
 
-{{ form_end(editFormCss) }}
+{{ form_end(updateFormCss) }}
 
 {% endblock %}

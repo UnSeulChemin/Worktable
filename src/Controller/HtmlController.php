@@ -77,7 +77,7 @@ class HtmlController extends AbstractController
     #[Route('/update/{id}', name: 'update', methods: ['GET', 'POST'])]
     public function updateHtml(Request $request, Html $updateHtml, EntityManagerInterface $manager): Response
     {
-        /* Update === $updateHtml */
+        /* Get Data === $updateHtml */
 
         /* Update Form */
         $updateFormHtml = $this->createForm(HtmlEditFormType::class, $updateHtml);
@@ -119,7 +119,7 @@ class HtmlController extends AbstractController
     #[Route('/delete/{id}', name: 'delete', methods: ['GET'])]
     public function deleteHtml(Html $deleteHtml, EntityManagerInterface $manager): Response
     {
-        /* Delete === $deleteHtml */
+        /* Get Data === $deleteHtml */
 
         /* Treat Data */
         $manager->remove($deleteHtml);
