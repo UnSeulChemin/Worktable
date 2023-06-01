@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CssRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CssRepository::class)]
 class Css
@@ -14,6 +15,10 @@ class Css
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message: 'Name field can\'t be empty.')]
+    #[Assert\Length(min: 3, max: 30,
+        minMessage: 'Name shoud have at least {{ limit }} characters.',
+        maxMessage: 'Name should have no more than {{ limit }} characters.')]
     private ?string $name = null;
 
     public function getId(): ?int
