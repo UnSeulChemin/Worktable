@@ -43,6 +43,8 @@
     <div class="card">
         <div>
             <p>{{ readCss.name }}</p>
+            <p>Crée le : {{ readCss.createdAt|date('d/m/Y') }}</p>       
+            <p>Modifier le : {{ readCss.createdAt|date('d/m/Y') }}</p>       
         </div>
         <div class="margin-top-min">
             <a class="button-send margin-right-min" href="{{ path('app_css_update', { id: readCss.id }) }}">Modifier</a>
