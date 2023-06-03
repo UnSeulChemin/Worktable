@@ -53,6 +53,11 @@
     padding: 20px 0;    
 }
 
+.warning-flash p
+{
+    padding-bottom: 0;
+}
+
 /* Generic */
 
 .hr

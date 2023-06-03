@@ -85,6 +85,9 @@ class HtmlController extends AbstractController
 
         if ($updateFormHtml->isSubmitted() && $updateFormHtml->isValid())
         {
+            /* UpdatedAt */
+            $updateHtml->setUpdatedAt(new \DateTimeImmutable());
+
             /* Get Data */
             $updateHtml = $updateFormHtml->getData();
 

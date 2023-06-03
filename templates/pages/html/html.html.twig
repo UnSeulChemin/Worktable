@@ -43,8 +43,8 @@
     <div class="card">
         <div>
             <p>{{ readHtml.name }}</p>
-            <p>Crée le : {{ readHtml.createdAt|date('d/m/Y') }}</p>
-            <p>Modifier le : {{ readHtml.updatedAt|date('d/m/Y') }}</p>  
+            <p>Crée le : {{ readHtml.createdAt|date('d/m/Y') }} à {{ readHtml.createdAt|date('H\\h\\') }}{{ readHtml.createdAt|date('i') }}</p>
+            <p>Modifier le : {{ readHtml.updatedAt|date('d/m/Y') }} à {{ readHtml.updatedAt|date('H\\h\\') }}{{ readHtml.updatedAt|date('i') }}</p>
         </div>
         <div class="margin-top-min">
             <a class="button-send margin-right-min" href="{{ path('app_html_update', { id: readHtml.id }) }}">Modifier</a>

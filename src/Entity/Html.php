@@ -28,6 +28,12 @@ class Html
         maxMessage: 'Name should have no more than {{ limit }} characters.')]
     private ?string $name = null;
 
+    public function __construct()
+    {
+        $this->created_at = new \DateTimeImmutable();
+        $this->updated_at = new \DateTimeImmutable();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
