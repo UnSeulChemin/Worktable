@@ -3,3 +3,6 @@
 @import 'components/class.css';
 /* _partials */
 @import 'components/_partials/header.css';
+/* pages */
+@import 'components/pages/register.css';
+@import 'components/pages/login.css';

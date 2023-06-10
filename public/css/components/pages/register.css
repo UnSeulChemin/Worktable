@@ -1,0 +1,22 @@
+#register div label
+{
+    font-size: 1.1em;
+    display: block;
+
+    margin-bottom: 10px;
+}
+
+#registration_form_submit
+{
+    cursor: pointer;
+    background: #a9a9a9;
+
+    padding: 8px;
+    border: 2px solid #333;
+    border-radius: 5px;
+}
+
+#registration_form_submit:hover
+{
+    opacity: 0.9;
+}
