@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Entity\Trait\CreatedAtTrait;
 use App\Entity\Trait\UpdatedAtTrait;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -42,10 +44,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Html::class, orphanRemoval: true)]
+    private Collection $htmls;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Css::class, orphanRemoval: true)]
+    private Collection $csses;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
         $this->updated_at = new \DateTimeImmutable();
+        $this->htmls = new ArrayCollection();
+        $this->csses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -116,5 +126,65 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, Html>
+     */
+    public function getHtmls(): Collection
+    {
+        return $this->htmls;
+    }
+
+    public function addHtml(Html $html): self
+    {
+        if (!$this->htmls->contains($html)) {
+            $this->htmls->add($html);
+            $html->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHtml(Html $html): self
+    {
+        if ($this->htmls->removeElement($html)) {
+            // set the owning side to null (unless already changed)
+            if ($html->getUser() === $this) {
+                $html->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Css>
+     */
+    public function getCsses(): Collection
+    {
+        return $this->csses;
+    }
+
+    public function addCss(Css $css): self
+    {
+        if (!$this->csses->contains($css)) {
+            $this->csses->add($css);
+            $css->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCss(Css $css): self
+    {
+        if ($this->csses->removeElement($css)) {
+            // set the owning side to null (unless already changed)
+            if ($css->getUser() === $this) {
+                $css->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

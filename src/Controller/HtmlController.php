@@ -35,6 +35,9 @@ class HtmlController extends AbstractController
 
         /* Create */
         $createHtml = new Html();
+        
+        /* Create, Relation ManyToOne, GetUserId */
+        $createHtml->setUser($this->getUser());
 
         /* Create Form */
         $createFormHtml = $this->createForm(HtmlFormType::class, $createHtml);

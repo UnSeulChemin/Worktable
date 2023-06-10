@@ -28,6 +28,10 @@ class Css
         maxMessage: 'Name should have no more than {{ limit }} characters.')]
     private ?string $name = null;
 
+    #[ORM\ManyToOne(inversedBy: 'csses')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
@@ -47,6 +51,18 @@ class Css
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
