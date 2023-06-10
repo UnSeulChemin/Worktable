@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Css;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Css>
@@ -25,7 +26,8 @@ class CssRepository extends ServiceEntityRepository
     {
         $this->getEntityManager()->persist($entity);
 
-        if ($flush) {
+        if ($flush)
+        {
             $this->getEntityManager()->flush();
         }
     }
@@ -34,7 +36,8 @@ class CssRepository extends ServiceEntityRepository
     {
         $this->getEntityManager()->remove($entity);
 
-        if ($flush) {
+        if ($flush)
+        {
             $this->getEntityManager()->flush();
         }
     }

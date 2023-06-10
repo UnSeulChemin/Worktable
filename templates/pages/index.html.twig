@@ -4,6 +4,10 @@
 
 <h2>Page Accueil</h2>
 
-<p class="padding-none">Veuillez consulter les autres pages.</p>
+{% if app.user %}
+    <p>Vous êtes connecter en tant que {{ app.user.userIdentifier }}</p>
+{% else %}
+    <p class="padding-none">Veuillez vous connecter pour voir consulter les autres pages.</p>
+{% endif %}
 
 {% endblock %}

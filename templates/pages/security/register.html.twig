@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+<h2>Formulaire d'Inscription</h2>
+
+{{ form_start(registrationForm) }}
+
+    {# Flash Messages #}
+    {% for message in app.flashes('warning') %}
+        <div class="warning-flash">
+            <p>{{ message }}</p>
+            {{ form_errors(registrationForm.email) }}
+            {{ form_errors(registrationForm.plainPassword) }}
+            {{ form_errors(registrationForm.agreeTerms) }}
+            {{ form_errors(registrationForm.submit) }}
+        </div>
+    {% endfor %}
+
+    <div>
+        {{ form_label(registrationForm.email) }}
+        {{ form_widget(registrationForm.email) }}
+    </div>
+
+    <div>
+        {{ form_label(registrationForm.plainPassword) }}
+        {{ form_widget(registrationForm.plainPassword) }}
+    </div>
+
+    <div>
+        {{ form_label(registrationForm.agreeTerms) }}
+        {{ form_widget(registrationForm.agreeTerms) }}
+    </div>
+
+    <div>
+        {{ form_label(registrationForm.submit) }}
+        {{ form_widget(registrationForm.submit) }}
+    </div>
+
+{{ form_end(registrationForm) }}
+
+{% endblock %}

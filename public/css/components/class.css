@@ -91,3 +91,16 @@
     padding: 20px 0;
     border: 1px solid #333;
 }
+
+.a-menu
+{
+    background-color: aqua;
+
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.a-menu:hover
+{
+    opacity: 0.9;
+}
