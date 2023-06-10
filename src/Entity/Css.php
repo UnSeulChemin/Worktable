@@ -29,7 +29,7 @@ class Css
     private ?string $name = null;
 
     #[ORM\ManyToOne(inversedBy: 'csses')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
     private ?User $user = null;
 
     public function __construct()
