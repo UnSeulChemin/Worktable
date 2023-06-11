@@ -30,8 +30,11 @@ class CssController extends AbstractController
     #[Route('', name: 'index')]
     public function indexCss(Request $request, CssRepository $repository, EntityManagerInterface $manager): Response
     {
+        /* Fetch Current User, Relation OneToMany */
+        $user = $this->getUser()->getId();
+
         /* Read */
-        $readCss = $repository->findBy([], ['id' => 'DESC']);
+        $readCss = $repository->findBy(['user' => $user], ['id' => 'DESC']);
 
         /* Create */
         $createCss = new Css();

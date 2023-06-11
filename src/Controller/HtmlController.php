@@ -30,8 +30,11 @@ class HtmlController extends AbstractController
     #[Route('', name: 'index')]
     public function indexHtml(Request $request, HtmlRepository $repository, EntityManagerInterface $manager): Response
     {
+        /* Fetch Current User, Relation OneToMany */
+        $user = $this->getUser()->getId();
+
         /* Read */
-        $readHtml = $repository->findBy([], ['id' => 'DESC']);
+        $readHtml = $repository->findBy(['user' => $user], ['id' => 'DESC']);
 
         /* Create */
         $createHtml = new Html();
