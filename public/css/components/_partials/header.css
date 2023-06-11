@@ -1,16 +1,16 @@
 header
 {
-    background-color: darkblue;
+    background-color: #d9138a;
 
-    padding: 20px 0;
+    padding: 25px 0;
 }
 
 header ul li
 {
-    padding-right: 20px;
+    margin-right: 40px;
 }
 
 header ul li:last-of-type
 {
-    padding-right: 0;
+    margin-right: 0;
 }

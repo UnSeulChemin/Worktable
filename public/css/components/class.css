@@ -94,9 +94,10 @@
 
 .a-menu
 {
-    background-color: aqua;
+    background-color: #322e2f;
+    color: #fff;
 
-    padding: 6px;
+    padding: 8px;
     border-radius: 10px;
 }
 
