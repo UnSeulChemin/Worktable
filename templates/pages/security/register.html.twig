@@ -14,7 +14,7 @@
             <p class="margin-bottom-min">{{ message }}</p>
             {{ form_errors(registrationForm.email) }}
             {{ form_errors(registrationForm.plainPassword) }}
-            {{ form_errors(registrationForm.agreeTerms) }}
+            {# {{ form_errors(registrationForm.agreeTerms) }} #}
         </div>
     {% endfor %}
 
@@ -28,10 +28,10 @@
         {{ form_widget(registrationForm.plainPassword) }}
     </div>
 
-    <div>
+    {# <div>
         {{ form_label(registrationForm.agreeTerms) }}
         {{ form_widget(registrationForm.agreeTerms) }}
-    </div>
+    </div> #}
 
     <div>
         {{ form_label(registrationForm.submit) }}

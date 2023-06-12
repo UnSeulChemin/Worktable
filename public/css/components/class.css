@@ -87,8 +87,8 @@
 {
     display: inline-block;
     cursor: pointer;
-    background-color: grey;
     width: 100px;
+    background-color: grey;
 
     padding: 5px;
     border: 1px solid #333;

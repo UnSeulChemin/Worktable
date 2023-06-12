@@ -16,8 +16,8 @@
     color: #fff;
 
     padding: 8px;
-    border-radius: 10px;
     border: none;
+    border-radius: 10px;
 }
 
 #login_form_submit:hover

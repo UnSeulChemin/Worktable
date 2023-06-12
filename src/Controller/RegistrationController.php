@@ -36,6 +36,12 @@ class RegistrationController extends AbstractController
         UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator,
         EntityManagerInterface $entityManager): Response
     {
+        // Si l'utilisateur est connecté
+        if ($this->getUser())
+        {
+            return $this->redirectToRoute('app_index');
+        }
+
         /* Create */
         $createUser = new User();
         $createUser->setRoles(['ROLE_USER']);

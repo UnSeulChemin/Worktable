@@ -46,15 +46,15 @@ class RegistrationFormType extends AbstractType
                 ],
                 'label' => 'Mot de passe'
             ])
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
-                'label' => 'Terme RGPD'
-            ])
+            // ->add('agreeTerms', CheckboxType::class, [
+            //     'mapped' => false,
+            //     'constraints' => [
+            //         new IsTrue([
+            //             'message' => 'You should agree to our terms.',
+            //         ]),
+            //     ],
+            //     'label' => 'Terme RGPD'
+            // ])
             ->add('submit', SubmitType::class, options:[
                 'label' => 'Inscription',
             ])
