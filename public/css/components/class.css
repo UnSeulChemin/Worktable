@@ -1,6 +1,11 @@
 
 /* Marges */
 
+.margin-top
+{
+    margin-top: 20px;
+}
+
 .margin-top-min
 {
     margin-top: 10px;
@@ -94,6 +99,9 @@
 
 .a-menu
 {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
     background-color: #322e2f;
     color: #fff;
 
@@ -104,4 +112,13 @@
 .a-menu:hover
 {
     opacity: 0.9;
+}
+
+.accueil-connexion
+{
+    display: inline-block;
+    width: 100px;
+
+    margin: auto;
+    margin-top: 20px;
 }

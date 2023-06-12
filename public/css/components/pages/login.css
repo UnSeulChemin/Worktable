@@ -9,12 +9,15 @@
 #login_form_submit
 {
     cursor: pointer;
+    display: inline-block;
+    width: 150px;
+    text-align: center;
     background-color: #322e2f;
     color: #fff;
 
     padding: 8px;
-    border: 2px solid #333;
-    border-radius: 5px;
+    border-radius: 10px;
+    border: none;
 }
 
 #login_form_submit:hover

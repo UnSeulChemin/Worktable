@@ -7,7 +7,8 @@
 {% if app.user %}
     <p>Vous êtes connecter en tant que {{ app.user.userIdentifier }}</p>
 {% else %}
-    <p class="padding-none">Veuillez vous connecter pour voir consulter les autres pages.</p>
+    <p class="padding-none">Veuillez vous connecter pour pouvoir consulter les autres pages.</p>
+    <a class="a-menu accueil-connexion" href="{{ path('app_login') }}">Connexion</a>
 {% endif %}
 
 {% endblock %}
