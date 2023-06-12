@@ -11,7 +11,7 @@
     {# Flash Messages #}
     {% for message in app.flashes('warning') %}
         <div class="warning-flash">
-            <p>{{ message }}</p>
+            <p class="margin-bottom-min">{{ message }}</p>
             {{ form_errors(registrationForm.email) }}
             {{ form_errors(registrationForm.plainPassword) }}
             {{ form_errors(registrationForm.agreeTerms) }}

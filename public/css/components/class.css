@@ -16,14 +16,19 @@
     margin-right: 10px;
 }
 
-.margin-left-min
+.margin-bottom-min
 {
-    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 .padding-bottom-none
 {
     padding-bottom: 0;
+}
+
+.margin-left-min
+{
+    margin-left: 10px;
 }
 
 .padding-none
@@ -61,6 +66,11 @@
 .warning-flash p
 {
     padding-bottom: 0;
+}
+
+.warning-flash ul li
+{
+    font-size: 1.1em;
 }
 
 /* Generic */
@@ -111,6 +121,8 @@
 
 .a-menu:hover
 {
+    background-color: #fff;
+    color: #322e2f;
     opacity: 0.9;
 }
 
